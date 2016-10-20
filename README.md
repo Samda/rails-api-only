@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+## this project using react as front-end. and here the front-end repos https://github.com/Samda/rails-api-only
