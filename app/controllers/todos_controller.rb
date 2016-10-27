@@ -14,6 +14,15 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    @todo = Todo.new(params[:id])
+    if @todo.destroy(@todo)
+      render(status: 200, json: { notice: "Delete success !" })
+    else
+      render(status: 200, json: { error: "Errors" })
+    end
+  end
+
   def create
     @todo = Todo.new(permitted_params)
     if @todo.save
