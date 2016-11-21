@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
 
   def index
-    @todos = Todo.all
+    @todos = Todo.indexed.order(:id)
     render json: { todos: @todos }
   end
 
