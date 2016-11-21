@@ -1,6 +1,8 @@
 class TodosController < ApplicationController
+
   def index
-    render(status: 200, json: Todo.all)
+    @todos = Todo.all
+    render json: { todos: @todos }
   end
 
   def show
@@ -15,11 +17,12 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.new(params[:id])
-    if @todo.destroy(@todo)
-      render(status: 200, json: { notice: "Delete success !" })
+    @todo = Todo.find(params[:id])
+    if @todo
+      @todo.destroy
+      render json: { notice: "Delete success !" }
     else
-      render(status: 200, json: { error: "Errors" })
+      render json: { error: "Errors" }
     end
   end
 
